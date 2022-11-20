@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorization</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+
+    <header id="header">
+        <h1 id="header-title">AUTH</h1>
+        <nav id="header-nav">
+            <ul id="header-ul">
+                {% if g.user %}
+                <li class="header-nav-item  logout-btn"><a class="header-nav-link" href="/logout">Logout</a></li>
+                {% else %}
+                <li class="header-nav-item signup-btn hide"><a class="header-nav-link" href="#">Signup</a></li>
+                <li class="header-nav-item login-btn"><a class="header-nav-link" href="#">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    {% for category, message in get_flashed_messages(with_categories=True) %}
+    <div class="alert">{{ message }}</div>
+    {% endfor %}
+
+    {% block content %}
+   <div class="container">
+        <div id="signup">
+            <h3>Signup</h3>
+            <form method="POST" action="/signup" class="form">
+                {{ form.hidden_tag() }}
+                {% for field in form
+                    if field.widget.input_type != 'hidden' %}
+                        <p>
+                        {{ field.label }}
+                        {{ field }}
+                        {% for error in field.errors %}
+                            {{ error }}
+                        {% endfor %}
+                        </p>
+                {% endfor %}
+                <button type="submit" class="">Submit</button>
+            </form>
+        </div> <!-- end signup -->
+
+        <div id="login" class="hide">
+            <h3>Login</h3>
+            <form method="POST" action="/login" class="form">
+                {{ form.hidden_tag() }}
+                {% for field in form
+                    if field.widget.input_type != 'hidden' %}
+                        <p>
+                        {{ field.label }}
+                        {{ field }}
+                        {% for error in field.errors %}
+                            {{ error }}
+                        {% endfor %}
+                        </p>
+                {% endfor %}
+                <button type="submit" class="">Submit</button>
+            </form>
+        </div> <!-- end login -->
+   </div>  <!--endcontainer-->
+   {% endblock %}
+    <script src="../static/app.js"></script>
+</body>
+</html>

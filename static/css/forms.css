@@ -1,0 +1,43 @@
+#signup{
+    grid-area: main;
+    border: solid 5px blue;
+    height: 300px;
+    margin-left: 10px;
+    width: 300px;
+    background-color: black;
+    border-radius: 25%;
+}
+
+#login{
+    grid-area: other;
+    border: solid 5px blue;
+    height: 300px;
+    margin-right: 10px;
+    width: 300px;
+    background-color: black;
+    border-radius: 25%;
+    /* box-shadow: inset black 10px; */
+}
+
+form{
+    position: relative;
+    background-color: black;
+    height: 150px;
+    width: 150px;
+    top: 30px;
+    left: 80px;
+    color: white;
+}
+
+input{
+    display: block;
+}
+
+h3{
+    text-align: center;
+    color: white;
+}
+
+.hide{
+    display: none;
+}
